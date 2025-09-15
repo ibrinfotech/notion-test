@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronRight, ChevronDown, Plus, FileText, Folder, Menu, X, Trash2 } from 'lucide-react';
+import { ChevronRight, ChevronDown, Plus, FileText, Folder, Menu, X, Trash2, LogOut } from 'lucide-react';
 import { useApp } from '../context/AppContext';
 import { Page } from '../types';
 
@@ -273,8 +273,19 @@ const Sidebar: React.FC = () => {
         </div>
       </div>
 
-      {/* Add Page Button */}
+      {/* Bottom Actions */}
       <div className="p-2 border-t border-slate-700">
+        <button
+          onClick={() => console.log('Logout clicked')}
+          className={`w-full flex items-center px-3 py-2 text-sm text-gray-300 hover:bg-slate-800 hover:text-white rounded-md transition-colors mb-1 ${
+            isSidebarCollapsed ? 'justify-center' : ''
+          }`}
+          title={isSidebarCollapsed ? 'Log out' : undefined}
+        >
+          <LogOut size={16} className={isSidebarCollapsed ? '' : 'mr-2'} />
+          {!isSidebarCollapsed && 'Log out'}
+        </button>
+
         <button
           onClick={() => addPage()}
           className={`w-full flex items-center px-3 py-2 text-sm text-gray-300 hover:bg-slate-800 hover:text-white rounded-md transition-colors ${
